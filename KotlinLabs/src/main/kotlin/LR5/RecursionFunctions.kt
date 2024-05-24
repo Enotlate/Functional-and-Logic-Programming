@@ -24,7 +24,7 @@ class RecursionFunctions {
         }
     }
 
-//   Найти количество нечетных цифр числа, больших 3 с помощью хвостовой рекурсии
+    //   Найти количество нечетных цифр числа, больших 3 с помощью хвостовой рекурсии
     tailrec fun countOddDigitsAboveThreeRecursiveDown(num: Int, count: Int = 0): Int {
         return if (num == 0) count else {
             val digit = num % 10
@@ -36,4 +36,17 @@ class RecursionFunctions {
 //   Нахождение НОД двух чисел с помощью хвостовой рекурсии
 
     tailrec fun nodRecursiveDown(a: Int, b: Int): Int = if (b == 0) a else nodRecursiveDown(b, a % b)
+
+
+    // Функция высшего порядка для рекурсивного вычисления операции над цифрами числа
+    fun recursiveDigitOperation(num: Int, initialValue: Int, operation: (Int, Int) -> Int): Int {
+        return if (num == 0) initialValue else operation(
+            num % 10,
+            recursiveDigitOperation(num / 10, initialValue, operation)
+        )
+    }
+
+
+
 }
+

@@ -44,4 +44,26 @@ class RecursionFunctionTest {
         assertEquals(4, main.nodRecursiveDown(20, 28)) // Ожидаемый результат: 4
     }
 
+
+
+
+    @Test
+    fun testRecursiveDigitOperation() {
+        val main = RecursionFunctions()
+        // Тест для умножения цифр числа
+        assertEquals(2, main.recursiveDigitOperation(12, 1) { digit, product -> digit * product })
+        assertEquals(3, main.recursiveDigitOperation(3, 1) { digit, product -> digit * product })
+        assertEquals(1, main.recursiveDigitOperation(0, 1) { digit, product -> digit * product })
+
+        // Тест для подсчета нечетных цифр больше 3
+        assertEquals(1, main.recursiveDigitOperation(12345, 0) { digit, count ->
+            count + if (digit > 3 && digit % 2 != 0) 1 else 0
+        })
+        assertEquals(0, main.recursiveDigitOperation(24680, 0) { digit, count ->
+            count + if (digit > 3 && digit % 2 != 0) 1 else 0
+        })
+        assertEquals(3, main.recursiveDigitOperation(13579, 0) { digit, count ->
+            count + if (digit > 3 && digit % 2 != 0) 1 else 0
+        })
+    }
 }
