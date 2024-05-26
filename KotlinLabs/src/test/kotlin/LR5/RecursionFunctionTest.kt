@@ -71,9 +71,30 @@ class RecursionFunctionTest {
         // Тест для подсчета нечетных цифр больше 3
         assertEquals(1, main.recursiveDigitOperation(12345, 0, { digit, product ->  product + 1 }, { it % 2 != 0 && it > 3}))
     }
+
+    @Test
+    fun testreduceFilter(){
+        val main = RecursionFunctions()
+        assertEquals(5,main.sumNonPrimeDivisors(6))
+        assertEquals(2,main.sumNonPrimeDivisors(8))
+        assertEquals(7 ,main.sumNonPrimeDivisors(10))
+
+    }
+
+    @Test
+    fun testproizDivisorsCountDigits(){
+        val main = RecursionFunctions()
+        assertEquals(6,main.proizDivisorsCountDigits(6))
+        assertEquals(46,main.proizDivisorsCountDigits(46))
+        assertEquals(1,main.proizDivisorsCountDigits(47))
+
+
+
+    }
 }
 
 
-
-
 //    Задача 7
+
+
+
