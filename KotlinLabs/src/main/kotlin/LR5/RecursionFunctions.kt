@@ -137,7 +137,14 @@ class RecursionFunctions {
     }
 
 
-
+    fun getFunction(functionName: String): ((Int) -> Int)? {
+        return when (functionName) {
+            "multiplyDigitsRecursiveUp" -> ::multiplyDigitsRecursiveUp
+            "countOddDigitsAboveThreeRecursiveUp" -> ::countOddDigitsAboveThreeRecursiveUp
+            "sumNonPrimeDivisors" -> ::sumNonPrimeDivisors
+            else -> null
+        }
+    }
 
 
 }
