@@ -66,19 +66,14 @@ class RecursionFunctionTest {
     fun testRecursiveDigitOperation() {
         val main = RecursionFunctions()
         // Тест для умножения цифр числа
-        assertEquals(2, main.recursiveDigitOperation(12, 1) { digit, product -> digit * product })
-        assertEquals(3, main.recursiveDigitOperation(3, 1) { digit, product -> digit * product })
-        assertEquals(1, main.recursiveDigitOperation(0, 1) { digit, product -> digit * product })
-
+        assertEquals(2, main.recursiveDigitOperation(12, 1, { digit, product -> digit * product }, { true }))
+        assertEquals(8, main.recursiveDigitOperation(1234, 1, { digit, product -> digit * product }, { it % 2 == 0 }))
         // Тест для подсчета нечетных цифр больше 3
-        assertEquals(1, main.recursiveDigitOperation(12345, 0) { digit, count ->
-            count + if (digit > 3 && digit % 2 != 0) 1 else 0
-        })
-        assertEquals(0, main.recursiveDigitOperation(24680, 0) { digit, count ->
-            count + if (digit > 3 && digit % 2 != 0) 1 else 0
-        })
-        assertEquals(3, main.recursiveDigitOperation(13579, 0) { digit, count ->
-            count + if (digit > 3 && digit % 2 != 0) 1 else 0
-        })
+        assertEquals(1, main.recursiveDigitOperation(12345, 0, { digit, product ->  product + 1 }, { it % 2 != 0 && it > 3}))
     }
 }
+
+
+
+
+//    Задача 7

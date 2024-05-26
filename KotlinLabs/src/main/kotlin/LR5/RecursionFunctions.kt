@@ -38,15 +38,27 @@ class RecursionFunctions {
     tailrec fun nodRecursiveDown(a: Int, b: Int): Int = if (b == 0) a else nodRecursiveDown(b, a % b)
 
 
-    // Функция высшего порядка для рекурсивного вычисления операции над цифрами числа
-    fun recursiveDigitOperation(num: Int, initialValue: Int, operation: (Int, Int) -> Int): Int {
-        return if (num == 0) initialValue else operation(
-            num % 10,
-            recursiveDigitOperation(num / 10, initialValue, operation)
-        )
+// Функция высшего порядка для рекурсивного вычисления операции над цифрами числа
+fun recursiveDigitOperation(num: Int,initialValue: Int,operation: (Int, Int) -> Int,filter: (Int) -> Boolean): Int {
+    return if (num == 0) initialValue else {
+        if (filter(num % 10)) {
+            operation(
+                num % 10,
+                recursiveDigitOperation(num / 10, initialValue, operation, filter)
+            )
+        } else {
+            recursiveDigitOperation(num / 10, initialValue, operation, filter)
+        }
     }
 
 
+
+}
+
+
+
+
+//    Задача 7
 
 }
 
